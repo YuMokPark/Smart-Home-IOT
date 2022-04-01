@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset = "UTF-8">
+    <title>Home Network</title>
+    <link rel="short icon" href="#">
+</head>
+<body>
+    <div>
+        <div>
+            <h2>HOME IoT</h2>
+        </div>
+        <div>
+            <div>
+                <button onclick="led1_on()">거실 전등 ON</button>
+            </div>
+            <div>
+                <button onclick="led1_off()">거실 전등 OFF</button>
+            </div>
+            <div>
+                <button onclick="led2_on()">화장실 전등 ON</button>
+            </div>
+            <div> 
+                <button onclick="led2_off()">화장실 전등 OFF</button>
+            </div>
+            <div>
+                <button onclick="led3_on()">방 전등 ON</button>
+            </div>
+            <div>
+                <button onclick="led3_off()">방 전등 OFF</button>
+            </div>
+            <div>
+                <button onclick="cctv()">cctv</button>
+            </div>
+        </div>
+        <div id = "result">
+        </div>
+    </div>
+
+    <script>
+        function led1_on() {
+            fetch("/led1/on")
+            .then(response=>response.text())
+            .then(data=> {
+                console.log(data);
+                let result = document.querySelector("#result");
+                if(data == "ok"){
+                    result.innerHTML="<h1>LED is runinng</h1>";
+                } else {
+                    result.innerHTML = "<h1>error</h1>";
+                }
+            });
+        }
+        function led1_off(){
+            fetch("/led1/off")
+            .then(response=>response.text())
+            .then(data=>{
+                console.log(data);
+                let result = document.querySelector("#result");
+                if(data == "ok"){
+                    result.innerHTML="<h1>LED is stopping</h1>";
+                } else {
+                    result.innerHTML = "<h1>error</h1>";
+                }
+            });
+        }
+        //화장실 전등 제어
+        function led2_on() {
+            fetch("/led2/on")
+            .then(response=>response.text())
+            .then(data=> {
+                console.log(data);
+                let result = document.querySelector("#result");
+                if(data == "ok"){
+                    result.innerHTML="<h1>LED is runinng</h1>";
+                } else {
+                    result.innerHTML = "<h1>error</h1>";
+                }
+            });
+        }
+        function led2_off(){
+            fetch("/led2/off")
+            .then(response=>response.text())
+            .then(data=>{
+                console.log(data);
+                let result = document.querySelector("#result");
+                if(data == "ok"){
+                    result.innerHTML="<h1>LED is stopping</h1>";
+                } else {
+                    result.innerHTML = "<h1>error</h1>";
+                }
+            });
+        }
+        //방 전등 제어
+        function led3_on() {
+            fetch("/led3/on")
+            .then(response=>response.text())
+            .then(data=> {
+                console.log(data);
+                let result = document.querySelector("#result");
+                if(data == "ok"){
+                    result.innerHTML="<h1>LED is runinng</h1>";
+                } else {
+                    result.innerHTML = "<h1>error</h1>";
+                }
+            });
+        }
+        function led3_off(){
+            fetch("/led3/off")
+            .then(response=>response.text())
+            .then(data=>{
+                console.log(data);
+                let result = document.querySelector("#result");
+                if(data == "ok"){
+                    result.innerHTML="<h1>LED is stopping</h1>";
+                } else {
+                    result.innerHTML = "<h1>error</h1>;
+                }
+            });
+        }
+        function cctv(){
+            fetch("/camera")
+        }
+        function gas(){
+            fetch("/gas")
+        }
+        function dust(){
+            fetch("/dust")
+        }
+    </script>
+</body>
+</html>
